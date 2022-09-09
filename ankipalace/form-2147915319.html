@@ -14,6 +14,7 @@
 
       * {
         box-sizing: border-box;
+        font-family: Rajdhani !important;
       }
 
       #content.hidden {
@@ -28,7 +29,7 @@
         height: 100%;
         margin: 0;
         background-color: black;
-        font-family: "Rajdhani";
+        font-family: Rajdhani !important;
         text-align: center;
       }
 
@@ -70,9 +71,6 @@
           content.classList.remove("hidden");
         });
       });
-      iframe.load(function () {
-        iframe.contents().find('body').css('font-family', 'Rajdhani');
-      }
     </script>
   </body>
 </html>
