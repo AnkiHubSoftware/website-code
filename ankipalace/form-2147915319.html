@@ -62,28 +62,14 @@
     </div>
 
     <script>
-    "use strict";
-
-    require("core-js/modules/es.error.cause.js");
-
-    var _this = void 0;
-
-    function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
-
-    var iframe = document.getElementById("iframe");
-    var content = document.getElementById("content");
-    iframe.addEventListener("load", function (ev) {
-      var _this2 = this;
-
-      _newArrowCheck(this, _this);
-
-      iframe.contentWindow.addEventListener("beforeunload", function (ev) {
-        _newArrowCheck(this, _this2);
-
-        iframe.style.display = "none";
-        content.classList.remove("hidden");
-      }.bind(this));
-    }.bind(void 0));
+    const iframe = document.getElementById("iframe");
+    const content = document.getElementById("content");
+          iframe.addEventListener("load", (ev) => {
+            iframe.contentWindow.addEventListener("beforeunload", (ev) => {
+              iframe.style.display = "none";
+              content.classList.remove("hidden");
+            });
+          });
     </script>
   </body>
 </html>
