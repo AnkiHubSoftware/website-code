@@ -62,14 +62,14 @@
     </div>
 
     <script>
-      const iframe = document.getElementById("iframe");
-      const content = document.getElementById("content");
-      iframe.addEventListener("load", (ev) => {
-        iframe.contentWindow.addEventListener("beforeunload", (ev) => {
-          iframe.style.display = "none";
-          content.classList.remove("hidden");
-        });
+    const iframe = document.getElementById("iframe");
+    const content = document.getElementById("content");
+    iframe.addEventListener("load", ev => {
+      iframe.contentWindow.addEventListener("beforeunload", ev => {
+        iframe.style.display = "none";
+        content.classList.remove("hidden");
       });
+    });
     </script>
   </body>
 </html>
