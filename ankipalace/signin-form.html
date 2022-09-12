@@ -58,24 +58,22 @@
     rel="stylesheet"
   />
   <body>
-    <iframe
-      id="iframe"
-      src="./signin-form-inner.html"
-      sandbox="allow-forms allow-modals allow-scripts allow-same-origin allow-popups"
-    ></iframe>
+    <iframe id="iframe" src="./signin-form-inner.html"></iframe>
     <div id="content" class="hidden">
       <h1 id="main">Thank You!</h1>
       <p id="sub">We have received your submission.</p>
     </div>
 
     <script>
+      function showCongrats(ev) {
+        iframe.style.display = "none";
+        content.classList.remove("hidden");
+      }
       const iframe = document.getElementById("iframe");
       const content = document.getElementById("content");
       iframe.addEventListener("load", (ev) => {
-        iframe.contentWindow.addEventListener("beforeunload", (ev) => {
-          iframe.style.display = "none";
-          content.classList.remove("hidden");
-        });
+        iframe.contentWindow.addEventListener("beforeunload", showCongrats);
+        iframe.contentWindow.addEventListener("pagehide", showCongrats);
       });
     </script>
   </body>
