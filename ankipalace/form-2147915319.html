@@ -35,7 +35,7 @@
       h1 {
         width: 100%;
         margin-bottom: 10px;
-        font-size:  35px;
+        font-size: 35px;
         color: #373f47;
         font-weight: bold;
         line-height: 1.2;
@@ -51,10 +51,25 @@
       }
     </style>
   </head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <body>
+    <script>
+      var initial = true;
+      function iframeLoaded() {
+        if (!initial) {
+          // show congrats when iframe load is fired second time
+          // this is for iphone safari on which beforeunload doesn't work.
+          showCongrats();
+        }
+        initial = false;
+      }
+    </script>
+
     <iframe id="iframe" src="./form-2147915319-inner.html"></iframe>
     <div id="content" class="hidden">
       <h1 id="main">Thank You!</h1>
@@ -62,14 +77,14 @@
     </div>
 
     <script>
-    const iframe = document.getElementById("iframe");
-    const content = document.getElementById("content");
-          iframe.addEventListener("load", (ev) => {
-            iframe.contentWindow.addEventListener("beforeunload", (ev) => {
-              iframe.style.display = "none";
-              content.classList.remove("hidden");
-            });
-          });
+      const iframe = document.getElementById("iframe");
+      const content = document.getElementById("content");
+
+      function showCongrats(ev) {
+        iframe.style.display = "none";
+        content.classList.remove("hidden");
+      }
+      iframe.contentWindow.addEventListener("beforeunload", showCongrats);
     </script>
   </body>
 </html>
